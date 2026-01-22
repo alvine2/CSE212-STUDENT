@@ -9,9 +9,10 @@ public class FindPairsTests
     [TestMethod]
     public void FindPairs_TwoPairs()
     {
+        Debug.WriteLine("=== Running FindPairs_TwoPairs test ===");
         var actual = SetsAndMaps.FindPairs(["am", "at", "ma", "if", "fi"]);
         var expected = new[] { "ma & am", "fi & if" };
-
+        
         Assert.AreEqual(expected.Length, actual.Length);
         Assert.AreEqual(Canonicalize(expected), Canonicalize(actual));
     }
@@ -132,6 +133,7 @@ public class SummarizeDegreesTests
     [TestMethod]
     public void SummarizeCensusDegrees()
     {
+        Debug.WriteLine("=== Running SummarizeCensusDegrees test ===");
         var result = SetsAndMaps.SummarizeDegrees("../../../census.txt");
         var expected = new Dictionary<string, int> {
             {"Bachelors", 5355},
@@ -162,6 +164,7 @@ public class IsAnagramTests
     [TestMethod]
     public void IsAnagram_BasicCases()
     {
+        Debug.WriteLine("=== Running IsAnagram_BasicCases test ===");
         Assert.IsTrue(SetsAndMaps.IsAnagram("CAT", "ACT"));
         Assert.IsFalse(SetsAndMaps.IsAnagram("DOG", "GOOD"));
         Assert.IsFalse(SetsAndMaps.IsAnagram("AABBCCDD", "ABCD"));
@@ -237,27 +240,45 @@ public class MazeTests
     [TestMethod]
     public void Maze_Basic()
     {
+        Debug.WriteLine("=== Running Maze_Basic test ===");
         Dictionary<ValueTuple<int, int>, bool[]> map = SetupMazeMap();
         var maze = new Maze(map);
         Assert.AreEqual("Current location (x=1, y=1)", maze.GetStatus());
+        Debug.WriteLine(maze.GetStatus());
         AssertThrowsInvalidOperationException(maze.MoveUp);
+        Debug.WriteLine(maze.GetStatus());
         AssertThrowsInvalidOperationException(maze.MoveLeft);
         maze.MoveRight();
+        Debug.WriteLine(maze.GetStatus());
         AssertThrowsInvalidOperationException(maze.MoveRight);
         maze.MoveDown();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveDown();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveDown();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveRight();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveRight();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveUp();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveRight();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveDown();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveLeft();
+        Debug.WriteLine(maze.GetStatus());
         AssertThrowsInvalidOperationException(maze.MoveDown);
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveRight();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveDown();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveDown();
+        Debug.WriteLine(maze.GetStatus());
         maze.MoveRight();
+        Debug.WriteLine(maze.GetStatus());
         Assert.AreEqual("Current location (x=6, y=6)", maze.GetStatus());
     }
 
@@ -335,6 +356,7 @@ public class EarthquakeDailySummaryTests
     [TestMethod]
     public void EarthquakeDailySummary_Basic()
     {
+        Debug.WriteLine("=== Running EarthquakeDailySummary_Basic test ===");
         var result = SetsAndMaps.EarthquakeDailySummary();
         Assert.IsTrue(result.Length > 5, "Too few earthquakes");
 

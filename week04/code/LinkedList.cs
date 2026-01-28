@@ -42,7 +42,7 @@ public class LinkedList : IEnumerable<int>
             _tail = newNode;
         }
         //  If the list is not empty
-        else
+        else if (_tail is not null)
         {
              // Set the Prev of the new node to the current tail (newNode.Prev = tail)
              newNode.Prev = _tail;
